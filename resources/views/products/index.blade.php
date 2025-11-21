@@ -19,7 +19,6 @@ class="form-control form-control me-2"
 placeholder="Cari..."
 value="{{ request('search') }}">
 <button class="btn btn-primary btn-sm" type="submit">
-<button class="btn btn-primary btn-sm" type="submit">
 <i class="bx bx-search"></i>
 </button>
 </form>

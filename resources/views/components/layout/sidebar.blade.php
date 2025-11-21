@@ -143,4 +143,16 @@ transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-
 </ul>
 </li>
 </ul>
+<li class="menu-item">
+<a href="#" class="menu-link menu-toggle">
+<i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
+<div data-i18n="Authentications">Kategori</div>
+</a>
+<ul class="menu-sub">
+<li class="menu-item">
+<a href="{{ route('category.create')}}" class="menu-link">
+<div data-i18n="Basic">Tambah Data</div>
+</a>
+</li>
+
 </aside>

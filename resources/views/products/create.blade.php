@@ -10,7 +10,7 @@
 <!-- Basic Layout & Basic with Icons -->
 <div class="row">
 <div class="mb-4">
-<a href="{{ url()->previous() }}" class="btn btn-secondary">
+<a href="{{ route('products.index') }}" class="btn btn-secondary">
 <i class="bx bx-arrow-back"></i> Kembali
 </a>
 </div>

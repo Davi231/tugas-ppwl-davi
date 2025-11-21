@@ -6,8 +6,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
-    return view('home');
+return view('home');
 })->name('home');
+
 
 
 Route::get('/dashboard', function () {

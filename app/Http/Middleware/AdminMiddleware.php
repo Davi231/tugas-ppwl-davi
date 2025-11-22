@@ -1,27 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Middleware;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Auth\Events\Verified;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\RedirectResponse;
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
-class VerifyEmailController extends Controller
+
+class AdminMiddleware
 {
     /**
-     * Mark the authenticated user's email address as verified.
+     * Handle an incoming request.
+     *
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function __invoke(EmailVerificationRequest $request): RedirectResponse
+    public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->hasVerifiedEmail()) {
-            return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
+        if (Auth::check() && Auth::user()->role === 'admin') {
+            return $next($request);
         }
-
-        if ($request->user()->markEmailAsVerified()) {
-            event(new Verified($request->user()));
-        }
-
-        return redirect()->intended(route('dashboard', absolute: false).'?verified=1');
+        
+        abort(403, 'Unauthorized');
     }
 }
